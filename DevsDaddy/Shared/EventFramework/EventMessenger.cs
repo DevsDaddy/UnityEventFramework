@@ -167,8 +167,7 @@ namespace DevsDaddy.Shared.EventFramework
         private void SubscribeInternal(EventSubscriber subscriber)
         {
             // check is subscriber is valid
-            if(!(subscriber is {IsAlive: true}))
-            {
+            if (subscriber?.IsAlive != true) {
                 Debug.LogError($"The {nameof(subscriber)} is null or not alive.");
                 return;
             }
