@@ -13,6 +13,11 @@ There are several advantages to this approach, ranging from reducing cohesion in
 - Download and import <a href="https://github.com/DevsDaddy/UnityEventFramework/releases">latest release from this page</a>;
 - See <a href="#usage">usage examples below</a>;
 
+**Or add this URL to UPM:**
+```
+https://github.com/DevsDaddy/UnityEventFramework.git?path=/DevsDaddy/Shared/EventFramework/
+```
+
 ## Usage
 **Create Payload (Event Model) for your Events:**
 ```csharp
