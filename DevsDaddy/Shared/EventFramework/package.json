@@ -1,0 +1,16 @@
+{
+  "name": "com.devsdaddy.eventframework",
+  "displayName": "Unity Event Framework",
+  "version": "0.9.0",
+  "unity": "2019.3",
+  "description": "Unity Event Framework is a simple and elegant way to handle events between your objects in Unity. The framework uses the PubSub pattern with current Payload states for easy access to previously sent events.",
+  "keywords": [
+    "events",
+    "framework",
+    "pubsub",
+    "pattern",
+    "reactive",
+    "unity"
+  ],
+  "category": "Unity"
+}
