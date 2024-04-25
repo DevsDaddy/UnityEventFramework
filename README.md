@@ -10,10 +10,10 @@ There are several advantages to this approach, ranging from reducing cohesion in
 
 ## Get Started
 **Installation process:**
-- Download and import <a href="https://github.com/DevsDaddy/UnityEventFramework/releases">latest release from this page</a>;
+- Install a package using Unity Package Manager (https://github.com/DevsDaddy/UnityEventFramework.git?path=/DevsDaddy/Shared/EventFramework/);
 - See <a href="#usage">usage examples below</a>;
 
-**Or add this URL to UPM:**
+**Unity Package Manager URL:**
 ```
 https://github.com/DevsDaddy/UnityEventFramework.git?path=/DevsDaddy/Shared/EventFramework/
 ```
