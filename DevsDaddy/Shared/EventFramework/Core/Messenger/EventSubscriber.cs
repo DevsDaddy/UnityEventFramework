@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 namespace DevsDaddy.Shared.EventFramework.Core.Messenger
@@ -126,11 +127,20 @@ namespace DevsDaddy.Shared.EventFramework.Core.Messenger
                 }
 
                 // check if predicate returned 'true'
-                var isAccepted = (bool)_predicateMethod.Invoke(predicateTarget, new object[] {payload});
-                if(!isAccepted)
+                try
                 {
-                    // TODO log ?
-                    return;
+                    var isAccepted = (bool)_predicateMethod.Invoke(predicateTarget, new object[] {payload});
+                    if(!isAccepted)
+                    {
+                        // TODO log ?
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Preserve the original exception's stack trace when re-throwing
+                    Exception actualException = ex.InnerException ?? ex;
+                    ExceptionDispatchInfo.Capture(actualException).Throw();
                 }
             }
 
@@ -141,7 +151,17 @@ namespace DevsDaddy.Shared.EventFramework.Core.Messenger
             {
                 callbackTarget = _callbackTarget.Target;
             }
-            _callbackMethod.Invoke(callbackTarget, new object[] {payload});
+            
+            try
+            {
+                _callbackMethod.Invoke(callbackTarget, new object[] {payload});
+            }
+            catch (Exception ex)
+            {
+                // Preserve the original exception's stack trace when re-throwing
+                Exception actualException = ex.InnerException ?? ex;
+                ExceptionDispatchInfo.Capture(actualException).Throw();
+            }
         }
         
         public void Dispose()
@@ -161,4 +181,5 @@ namespace DevsDaddy.Shared.EventFramework.Core.Messenger
             }
         }
     }
+
 }
